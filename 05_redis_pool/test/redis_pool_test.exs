@@ -1,7 +1,7 @@
 defmodule RedisPoolTest do
   use ExUnit.Case
 
-  @tag :skip
+  # @tag :skip
   test "starting and using the pool", context do
     assert {:ok, sup} = RedisPool.start_link(name: context.test)
     assert is_pid(sup)
@@ -9,7 +9,7 @@ defmodule RedisPoolTest do
     assert RedisPool.command(context.test, ["PING"]) == {:ok, "PONG"}
   end
 
-  @tag :skip
+  # @tag :skip
   test "with two connections, requests are routed at random", context do
     assert {:ok, sup} = RedisPool.start_link(name: context.test, connections: 2)
     assert is_pid(sup)
